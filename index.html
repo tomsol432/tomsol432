@@ -30,9 +30,7 @@
                 if (status.state === "granted") {
                     logbox.textContent = "NFC permission granted";
                     startButton.style.visibility = "visible";
-                    nfcReader.listen = () => {
-                        logbox.textContent = "NFC tag detected";
-                    }
+                    startButton.addEventListener('click', start);
                 }
                 if (status.state === "prompt") {
                     logbox.textContent = "Waiting for user permission...";
