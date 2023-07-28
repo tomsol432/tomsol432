@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="title">NFC Reader</h2>
+    <p id="message">Waiting for NFC tag...</p>
+    <button id="start" (onclick)="write()">Start write</button>
+    <script>
+        const message = document.getElementById('message');
+
+
+        async function write() {
+            // ask user to allow our site to use NFC
+
+            await navigator.permissions.query({
+                name: "nfc"
+            });
+
+            const ndef = new NDEFReader();
+            const message = {
+                records: [{ recordType: "url", data: "https://aibs.pl/" }],
+            };
+            ndef.write(message);
+            message.textContent = "NFC tag written";
+        }
+    </script>
+</body>
+
+</html>
