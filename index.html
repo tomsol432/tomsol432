@@ -27,8 +27,8 @@
 
             permissionStatus.then((status) => {
                 if (status.state === "granted") {
+                    logbox.textContent = "NFC permission granted";
 
-                    
                     nfcReader.listen = () => {
                         logbox.textContent = "NFC tag detected";
                         startButton.style.visibility = "visible";
@@ -47,7 +47,12 @@
         }
 
         async function start() {
+            const emptyRecord = {
+                recordType: "empty"
+            };
 
+            const ndef = new NDEFReader();
+            await ndef.write({ records: [emptyRecord] });
             const message = {
                 records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
             };
