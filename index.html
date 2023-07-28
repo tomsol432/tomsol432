@@ -18,6 +18,7 @@
         const setupButton = document.getElementById('setup');
         setupButton.addEventListener('click', setup);
         logbox.textContent = "Waiting for NFC tag....";
+        const nfcReader = new NFCReader();
         function setup() {
             const permissionStatus =
                 navigator.permissions.query({
@@ -27,7 +28,7 @@
             permissionStatus.then((status) => {
                 if (status.state === "granted") {
 
-                    const nfcReader = new NFCReader();
+                    
                     nfcReader.listen = () => {
                         logbox.textContent = "NFC tag detected";
                         startButton.style.visibility = "visible";
