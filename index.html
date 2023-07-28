@@ -46,12 +46,14 @@
 
         async function start() {
             logbox.textContent = "Writing NFC tag...";
-            const ndef = new NDEFReader();
             const message = {
                 records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
             };
-            //wait for 1000 ms
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            //count down from 5 to 0 and show the number on the screen
+            for (let i = 5; i >= 0; i--) {
+                logbox.textContent = "Writing NFC tag in " + i + " seconds...";
+                await new Promise(r => setTimeout(r, 1000));
+            }
             nfcReader.write(message);
             logbox.textContent = "NFC tag written";
         }
