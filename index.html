@@ -8,15 +8,14 @@
 </head>
 
 <body>
-    <h2 id="title">NFC Reader 2</h2>
+    <h2 id="title">NFC Reader 3</h2>
     <p id="log">Waiting for NFC tag...</p>
     <button id="start" (onclick)="write()">Start write</button>
     <script>
-
-        const log = document.getElementById('log');
-
-
+        const logbox = document.getElementById('log');
         async function write() {
+            logbox.textContent = "Waiting for NFC tag...";
+
             const permissionStatus =
                 await navigator.permissions.query({
                     name: "nfc"
@@ -28,7 +27,7 @@
                     records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
                 };
                 ndef.write(message);
-                log.textContent = "NFC tag written";
+                logbox.textContent = "NFC tag written";
             }
         }
     </script>
