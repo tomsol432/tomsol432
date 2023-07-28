@@ -14,7 +14,6 @@
     <script>
         const logbox = document.getElementById('log');
         const startButton = document.getElementById('start');
-        startButton.addEventListener('click', start);
         logbox.textContent = "Waiting for NFC tag....";
         const permissionStatus =
             navigator.permissions.query({
@@ -26,6 +25,9 @@
                 const nfcReader = new NFCReader();
                 nfcReader.listen = () => {
                     logbox.textContent = "NFC tag detected";
+                    //wait for 1000 ms
+                    setTimeout(start, 1000);
+                    
                 }
 
             }
@@ -42,7 +44,6 @@
         
 
         async function start() {
-            logbox.textContent = "Waiting for NFC tag...";
 
             const ndef = new NDEFReader();
             const message = {
