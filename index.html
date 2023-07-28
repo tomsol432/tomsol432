@@ -15,21 +15,19 @@
         const logbox = document.getElementById('log');
         const startButton = document.getElementById('start');
         logbox.textContent = "Waiting for NFC tag....";
+        const nfcReader = new NFCReader();
         const permissionStatus =
             navigator.permissions.query({
                 name: "nfc"
             });
-
         permissionStatus.then((status) => {
             if (status.state === "granted") {
-                const nfcReader = new NFCReader();
+               
                 nfcReader.listen = () => {
                     logbox.textContent = "NFC tag detected";
                     //wait for 1000 ms
                     setTimeout(start, 1000);
-                    
                 }
-
             }
             if (status.state === "prompt") {
                 logbox.textContent = "Waiting for user permission...";
