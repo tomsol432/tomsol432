@@ -19,7 +19,7 @@
         setupButton.addEventListener('click', setup);
         logbox.textContent = "Waiting for NFC tag....";
         const nfcReader = new NDEFReader();
-        
+
         function setup() {
             const permissionStatus =
                 navigator.permissions.query({
@@ -46,16 +46,19 @@
 
         async function start() {
             logbox.textContent = "Writing NFC tag...";
-            const message = {
-                records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
-            };
-            //count down from 5 to 0 and show the number on the screen
-            for (let i = 5; i >= 0; i--) {
-                logbox.textContent = "Writing NFC tag in " + i + " seconds...";
-                await new Promise(r => setTimeout(r, 1000));
+            nfcReader.scan().then(async () => {
+                const message = {
+                    records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
+                };
+                nfcReader.write(message).then(() => {
+                    logbox.textContent = "NFC tag written";
+                }).catch((error) => {
+                    logbox.textContent = "Error: " + error;
+                });
             }
-            nfcReader.write(message);
-            logbox.textContent = "NFC tag written";
+            ).catch((error) => {
+                logbox.textContent = "Error: " + error;
+            });
         }
     </script>
 </body>
