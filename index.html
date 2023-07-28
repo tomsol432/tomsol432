@@ -9,25 +9,27 @@
 
 <body>
     <h2 id="title">NFC Reader</h2>
-    <p id="message">Waiting for NFC tag...</p>
+    <p id="log">Waiting for NFC tag...</p>
     <button id="start" (onclick)="write()">Start write</button>
     <script>
-        const message = document.getElementById('message');
+
+        const log = document.getElementById('log');
 
 
         async function write() {
-            // ask user to allow our site to use NFC
+            const permissionStatus =
+                await navigator.permissions.query({
+                    name: "nfc"
+                });
+            if (permissionStatus.state === "granted") {
 
-            await navigator.permissions.query({
-                name: "nfc"
-            });
-
-            const ndef = new NDEFReader();
-            const message = {
-                records: [{ recordType: "url", data: "https://aibs.pl/" }],
-            };
-            ndef.write(message);
-            message.textContent = "NFC tag written";
+                const ndef = new NDEFReader();
+                const message = {
+                    records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
+                };
+                ndef.write(message);
+                log.textContent = "NFC tag written";
+            }
         }
     </script>
 </body>
