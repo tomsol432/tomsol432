@@ -10,10 +10,12 @@
 <body>
     <h2 id="title">NFC Reader 3</h2>
     <p id="log">Waiting for NFC tag...</p>
-    <button id="start" (onclick)="write()">Start write</button>
+    <button id="start" >Start write</button>
     <script>
         const logbox = document.getElementById('log');
-        async function write() {
+        const startButton = document.getElementById('start');
+        startButton.addEventListener('click', start);
+        async function start() {
             logbox.textContent = "Waiting for NFC tag...";
 
             const permissionStatus =
