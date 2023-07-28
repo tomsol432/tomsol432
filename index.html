@@ -18,7 +18,7 @@
         const setupButton = document.getElementById('setup');
         setupButton.addEventListener('click', setup);
         logbox.textContent = "Waiting for NFC tag....";
-        const nfcReader = new NFCReader();
+        const nfcReader = new NDEFReader();
         function setup() {
             const permissionStatus =
                 navigator.permissions.query({
@@ -48,13 +48,12 @@
 
         async function start() {
 
-            const ndef = new NDEFReader();
             const message = {
                 records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
             };
             //wait for 1000 ms
             await new Promise(resolve => setTimeout(resolve, 1000));
-            ndef.write(message);
+            nfcReader.write(message);
             logbox.textContent = "NFC tag written";
         }
     </script>
