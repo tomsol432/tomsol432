@@ -15,6 +15,11 @@
         const logbox = document.getElementById('log');
         const startButton = document.getElementById('start');
         startButton.addEventListener('click', start);
+        logbox.textContent = "Waiting for NFC tag....";
+        const nfcReader = new NFCReader();
+        nfcReader.listen = () => {
+            logbox.textContent = "NFC tag detected";
+        }
         async function start() {
             logbox.textContent = "Waiting for NFC tag...";
 
