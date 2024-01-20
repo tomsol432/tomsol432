@@ -53,11 +53,11 @@
                 nfcReader.write(message).then(() => {
                     logbox.textContent = "NFC tag written";
                 }).catch((error) => {
-                    logbox.textContent = "Error: " + error;
+                    logbox.textContent = "Error 1: " + error;
                 });
             }
             ).catch((error) => {
-                logbox.textContent = "Error: " + error;
+                logbox.textContent = "Error 2: " + error;
             });
         }
     </script>
