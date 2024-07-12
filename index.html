@@ -62,9 +62,7 @@
             pushMessageToLogOutput('Zbliż tag');
 
             try {
-                await ndef.write({
-                    records: [{ recordType: "url", data: data }],
-                });
+                await ndef.write(data);
                 await freezeTag(ndef);
                 pushMessageToLogOutput("Zapisano i zamknięto!");
             } catch (e) {
