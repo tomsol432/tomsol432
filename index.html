@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h2 id="title">NFC Reader 6</h2>
+    <h2 id="title">NFC Reader 7</h2>
     <p id="log">Waiting for NFC tag...</p>
     <button id="setup">Setup</button>
     <button id="start" style="visibility: hidden;">Start write</button>
@@ -50,15 +50,15 @@
                 const message = {
                     records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
                 };
-                await writeAndFreeze(message);
+                await writeAndFreeze(message, nfcReader);
             }
             ).catch((error) => {
                 logbox.textContent = "Error 2: " + error;
             });
         }
 
-        async function writeAndFreeze(data) {
-            const ndef = new NDEFReader();
+        async function writeAndFreeze(data, nfcReader) {
+            const ndef = nfcReader;
             pushMessageToLogOutput('Zbliż tag');
 
             try {
