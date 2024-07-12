@@ -50,15 +50,42 @@
                 const message = {
                     records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
                 };
-                nfcReader.write(message).then(() => {
-                    logbox.textContent = "NFC tag written";
-                }).catch((error) => {
-                    logbox.textContent = "Error 1: " + error;
-                });
+                writeAndFreeze(message);
             }
             ).catch((error) => {
                 logbox.textContent = "Error 2: " + error;
             });
+        }
+
+        async function writeAndFreeze(data) {
+            nfcButton.disabled = true;
+            const ndef = new NDEFReader();
+            pushMessageToLogOutput('Zbliż tag');
+
+            try {
+                await ndef.write({
+                    records: [{ recordType: "url", data: data }],
+                });
+                nfcButton.disabled = false;
+                await freezeTag(ndef);
+                pushMessageToLogOutput("Zapisano i zamknięto!");
+            } catch (e) {
+                pushMessageToLogOutput("Błąd zapisu: " + e.toString());
+                nfcButton.disabled = false;
+            }
+        }
+
+        async function freezeTag(ndef) {
+            await ndef.makeReadOnly()
+                .then(() => {
+                    pushMessageToLogOutput('Tag został zamrożony');
+                }).catch(error => {
+                    pushMessageToLogOutput('Błąd mrożenia: ' + error.toString());
+                });
+        }
+
+        function pushMessageToLogOutput(message) {
+            logbox.textContent = message;
         }
     </script>
 </body>
