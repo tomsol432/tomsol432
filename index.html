@@ -66,12 +66,10 @@
                 await ndef.write({
                     records: [{ recordType: "url", data: data }],
                 });
-                nfcButton.disabled = false;
                 await freezeTag(ndef);
                 pushMessageToLogOutput("Zapisano i zamknięto!");
             } catch (e) {
                 pushMessageToLogOutput("Błąd zapisu: " + e.toString());
-                nfcButton.disabled = false;
             }
         }
 
