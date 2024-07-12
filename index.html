@@ -50,7 +50,7 @@
                 const message = {
                     records: [{ recordType: "url", data: "https://dvuschfjsdakfbskjdgb.pl/" }],
                 };
-                writeAndFreeze(message);
+                await writeAndFreeze(message);
             }
             ).catch((error) => {
                 logbox.textContent = "Error 2: " + error;
