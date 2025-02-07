@@ -1,0 +1,166 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x3 mono matrix</title>
+</head>
+
+<body>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.0/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script>
+        AFRAME.registerComponent('markerhandler', {
+            init: function () {
+                this.el.sceneEl.addEventListener('markerFound', () => {
+                    console.log('markerFound', this.el);
+                    clearTimeout(this.el.markerLostTimeout);
+                    this.el.setAttribute('visible', true);
+                });
+
+                this.el.sceneEl.addEventListener('markerLost', () => {
+                    console.log('markerLost', this.el);
+                    this.el.markerLostTimeout = setTimeout(() => {
+                        this.el.setAttribute('visible', false);
+                    }, 3000); // 3 seconds delay
+                });
+            }
+        });
+    </script>
+
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: false;" embedded
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3; patternRatio: 0.3;">
+
+            <a-marker markerhandler type='barcode' value="0">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 0" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="1">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 1" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="2">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 2" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="3">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 3" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="4">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 4" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="5">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 5" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="6">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 6" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="7">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 7" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="8">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 8" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="9">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 9" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="10">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 10" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="11">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 11" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="12">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 12" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="13">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 13" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="14">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 14" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="15">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 15" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="16">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 16" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="17">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 17" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="18">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 18" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="19">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 19" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+            <a-marker markerhandler type='barcode' value="20">
+                <!-- Yellow background plane facing the camera -->
+                <a-plane position="0 0.5 0" width="2" height="1" color="yellow" rotation="-90 0 0"></a-plane>
+                <!-- Show text with marker index -->
+                <a-text value="Marker 20" position="0 0.5 0.01" color="black" rotation="-90 0 0"></a-text>
+            </a-marker>
+
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</body>
+</html>
