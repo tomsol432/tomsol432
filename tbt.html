@@ -162,5 +162,15 @@
             <a-entity camera></a-entity>
         </a-scene>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const camera = document.querySelector('#camera');
+            if (window.innerWidth <= 768) { // Mobile view
+                camera.setAttribute('camera', 'fov', 80);
+            } else { // Desktop view
+                camera.setAttribute('camera', 'fov', 60);
+            }
+        });
+    </script>
 </body>
 </html>
