@@ -17,9 +17,21 @@
             height: 100%;
             border: none;
         }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+        }
     </style>
 </head>
 <body>
+    <div class="overlay">
+        <p>4x4</p>
+    </div>
     <iframe src="fbf.html"></iframe>
 </body>
 </html>
