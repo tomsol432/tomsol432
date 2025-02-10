@@ -13,7 +13,8 @@
         AFRAME.registerComponent('markerhandler', {
             init: function () {
                 this.el.sceneEl.addEventListener('markerFound', () => {
-                    console.log('markerFound', this.el.getAttribute('value'));
+                    //vibrate the device when a marker is found
+                    navigator.vibrate(100);
                 });
             }
         });
