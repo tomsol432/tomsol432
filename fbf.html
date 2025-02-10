@@ -13,16 +13,7 @@
         AFRAME.registerComponent('markerhandler', {
             init: function () {
                 this.el.sceneEl.addEventListener('markerFound', () => {
-                    console.log('markerFound', this.el);
-                    clearTimeout(this.el.markerLostTimeout);
-                    this.el.setAttribute('visible', true);
-                });
-
-                this.el.sceneEl.addEventListener('markerLost', () => {
-                    console.log('markerLost', this.el);
-                    this.el.markerLostTimeout = setTimeout(() => {
-                        this.el.setAttribute('visible', false);
-                    }, 3000); // 3 seconds delay
+                    console.log('markerFound', this.el.getAttribute('value'));
                 });
             }
         });

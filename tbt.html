@@ -13,16 +13,7 @@
         AFRAME.registerComponent('markerhandler', {
             init: function () {
                 this.el.sceneEl.addEventListener('markerFound', () => {
-                    console.log('markerFound', this.el);
-                    clearTimeout(this.el.markerLostTimeout);
-                    this.el.setAttribute('visible', true);
-                });
-
-                this.el.sceneEl.addEventListener('markerLost', () => {
-                    console.log('markerLost', this.el);
-                    this.el.markerLostTimeout = setTimeout(() => {
-                        this.el.setAttribute('visible', false);
-                    }, 3000); // 3 seconds delay
+                    console.log('markerFound', this.el.getAttribute('value'));
                 });
             }
         });
@@ -30,7 +21,7 @@
 
     <body style="margin : 0px; overflow: hidden;">
         <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: false;" embedded
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3; patternRatio: 0.3;">
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3; patternRatio: 0.5;">
 
             <a-marker markerhandler type='barcode' value="0">
                 <!-- Yellow background plane facing the camera -->
